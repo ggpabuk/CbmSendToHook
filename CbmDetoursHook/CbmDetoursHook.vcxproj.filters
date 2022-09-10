@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="hook.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="CExploit.cpp">
+      <Filter>exploits</Filter>
+    </ClCompile>
+    <ClCompile Include="CChatSpammer.cpp">
+      <Filter>exploits</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="hook.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="packetId.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="CExploit.h">
+      <Filter>exploits</Filter>
+    </ClInclude>
+    <ClInclude Include="CChatSpammer.h">
+      <Filter>exploits</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="game">
+      <UniqueIdentifier>{32691ecc-7dc6-4aee-b643-e4187419cbe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="exploits">
+      <UniqueIdentifier>{3d568d72-2daf-49fd-ad65-5009dd7e5fcb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

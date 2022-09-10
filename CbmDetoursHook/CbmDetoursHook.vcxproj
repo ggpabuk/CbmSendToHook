@@ -85,11 +85,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CChatSpammer.h" />
+    <ClInclude Include="CExploit.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="hook.h" />
+    <ClInclude Include="packetId.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CChatSpammer.cpp" />
+    <ClCompile Include="CExploit.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="pch.cpp">

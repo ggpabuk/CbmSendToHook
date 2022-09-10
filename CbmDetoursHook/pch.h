@@ -7,6 +7,9 @@
 #include <winsock.h>
 #include <detours.h>
 #include <iostream>
+#include <cstdint>
+#include <vector>
+#include <thread>
 
 #pragma comment(lib, "Wsock32.lib")
 
