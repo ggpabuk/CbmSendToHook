@@ -5,6 +5,8 @@
 typedef std::unique_ptr<CExploit> exploitPtr;
 static std::vector<exploitPtr> g_exploits{};
 
+std::map<PACKETID, std::vector<std::function<void(PACKETID, char *, int)>>> hook::g_packetModifiers;
+
 void createConsole()
 {
     AllocConsole();
@@ -21,7 +23,7 @@ void catchHotkeys()
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-        for (const exploitPtr &const exploit : g_exploits)
+        for (const exploitPtr &exploit : g_exploits)
         {
             const short nKeyState = GetAsyncKeyState(exploit->m_iKey);
 
@@ -50,16 +52,21 @@ void catchHotkeys()
     }
 }
 
-BOOL APIENTRY DllMain(
-    HMODULE hModule,
-    DWORD  ul_reason_for_call,
-    LPVOID lpReserved
-)
+BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved)
 {
-    if (ul_reason_for_call == DLL_PROCESS_ATTACH)
+    if (dwReason == DLL_PROCESS_ATTACH)
     {
         createConsole();
         hook::init();
+
+        hook::addPacketModifier(M_CHAT, [](PACKETID packetId, char *pPacket, int len)
+        {
+            for (uint32_t i = 0; i < len; ++i)
+            {
+                printf("%02X ", pPacket[i] & 0xFF);
+            }
+            std::cout << '\n';
+        });
 
         g_exploits.push_back(std::make_unique<CChatSpammer>('C', true));
 

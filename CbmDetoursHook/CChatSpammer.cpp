@@ -10,7 +10,7 @@ void CChatSpammer::Spam(bool *pbIsEnabled)
     while (true)
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        if (!*pbIsEnabled || hook::playerId < 0) continue;
+        if (!*pbIsEnabled || hook::playerId < 1) continue;
 
         int buflen = strlen(m_szMessage) + 5;
         char *buf = new char[buflen];
